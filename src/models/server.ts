@@ -5,4 +5,10 @@ export type DataSet = {
 }
 
 export type DataSets = DataSet[]
-export type ServerResponse = { result: DataSet[] }
+
+export type DrawFunctionQueryParams = {
+  step: number
+  from: number
+  to: number
+}
+export type DrawFunctionQueryResponse = DataSets

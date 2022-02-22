@@ -1,8 +1,6 @@
 import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
 import { ChartDataPoint } from '../models/chart'
 import { AllowedChartNames } from '../models/system'
-import jsonData from '../temp.json'
-import { dataMapper } from '../utils/data-mapper'
 
 interface ChartProps {
   data: ChartDataPoint[]

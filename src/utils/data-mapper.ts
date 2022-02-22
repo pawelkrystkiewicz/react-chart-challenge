@@ -1,7 +1,7 @@
 import { ChartDataPoint } from '../models/chart'
 import { DataSets } from '../models/server'
 
-interface DataMapperResult {
+export interface DataMapperResult {
   data: ChartDataPoint[]
   names: string[]
 }

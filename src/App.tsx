@@ -1,37 +1,51 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import { Chart } from './components/chart'
-import jsonData from './temp.json'
-import { dataMapper } from './utils/data-mapper'
-import { AllowedChartNames } from './models/system'
+import { DrawFunctionQueryParams } from './models/server'
+import { AllowedChartNames as ChartNames } from './models/system'
+import { useLazyGetChartDataQuery } from './store/services/chart-data-api'
 
-const { data, names } = dataMapper(jsonData)
+const getStateShape = (names: string[]) => {
+  let computedNames: ChartNames = {}
+  names.forEach((name: string) => {
+    computedNames[name] = true
+  })
+  return computedNames
+}
 
 function App() {
-  const [allowedNames, setAllowedNames] = useState<AllowedChartNames>({})
+  const [allowedNames, setChartNames] = useState<ChartNames>({})
+  const [params, setParams] = useState<DrawFunctionQueryParams>({ from: 2, to: 2, step: 0.1 })
+  const [query, { data, error, isLoading }] = useLazyGetChartDataQuery()
 
   useEffect(() => {
-    let initiallyAllowed: AllowedChartNames = {}
-    names.forEach(name => {
-      initiallyAllowed[name] = true
-    })
-    setAllowedNames(initiallyAllowed)
+    if (data) {
+      let computedNames = getStateShape(data.names)
+      setChartNames(computedNames)
+    }
+  }, [data])
+
+  useEffect(() => {
+    if (!isLoading) {
+      query(params)
+    }
   }, [])
 
   const toggleChartByName = (name: string) => {
-    setAllowedNames(prev => ({ ...prev, [name]: !prev[name] }))
+    setChartNames(prev => ({ ...prev, [name]: !prev[name] }))
   }
 
   return (
     <div className="container">
       {Object.keys(allowedNames).map(name => (
-        <div>
+        <div key={name}>
           <button onClick={() => toggleChartByName(name)}>
             {name}:{String(allowedNames[name])}
           </button>
         </div>
       ))}
-      <Chart data={data} names={allowedNames} />
+      {data && <Chart data={data.data} names={allowedNames} />}
+      {error && <div>{error}</div>}
     </div>
   )
 }
