@@ -1,23 +1,64 @@
-import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts'
-import { ChartDataPoint } from '../models/chart'
-import { AllowedChartNames } from '../models/system'
+import { useMantineTheme } from "@mantine/core"
+import {
+  CartesianGrid,
+  Legend,
+  Line,
+  LineChart,
+  Tooltip,
+  XAxis,
+  YAxis,
+  ResponsiveContainer,
+  ReferenceLine,
+} from "recharts"
+import { ChartDataPoint } from "../models/chart"
+import { EnabledChartNames } from "../models/system"
+import { getDarkerMantineShades, getTextValue, getValueBasedColor } from "../utils/chart-color-functions"
 
 interface ChartProps {
-  data: ChartDataPoint[]
-  names: AllowedChartNames
+  data?: ChartDataPoint[]
+  names: EnabledChartNames
 }
 
 export const Chart: React.FC<ChartProps> = ({ data, names }) => {
+  const {
+    colors: { dark, blue, green, orange, red, grape },
+  } = useMantineTheme()
+
+  const colors = [
+    ...getDarkerMantineShades(blue),
+    ...getDarkerMantineShades(green),
+    ...getDarkerMantineShades(orange),
+    ...getDarkerMantineShades(red),
+    ...getDarkerMantineShades(grape),
+  ]
+
+  const getColor = getValueBasedColor(colors)
+
   return (
-    <LineChart width={1000} height={500} data={data}>
-      <CartesianGrid strokeDasharray="3 3" />
-      <XAxis dataKey="x" />
-      <YAxis />
-      <Tooltip />
-      <Legend />
-      {Object.keys(names).map(
-        name => names[name] && <Line key={name} type="monotone" dataKey={name} stroke="#8884d8" activeDot={{ r: 2 }} />,
-      )}
-    </LineChart>
+    <ResponsiveContainer width="100%" minHeight={350} data-testid='chart'>
+      <LineChart data={data}>
+        <CartesianGrid strokeDasharray="3 3" />
+        <XAxis dataKey="x" axisLine={false} />
+        <YAxis axisLine={false} />
+        <ReferenceLine xAxisId={0} x={0} stroke={dark[2]} />
+        <ReferenceLine yAxisId={0} y={0} stroke={dark[2]} />
+        <Tooltip />
+        <Legend />
+        {Object.keys(names).map(
+          name =>
+            names[name] && (
+              <Line
+                yAxisId={0}
+                xAxisId={0}
+                key={name}
+                dataKey={name}
+                type="monotone"
+                stroke={getColor(getTextValue(name))}
+                activeDot={{ r: 2 }}
+              />
+            )
+        )}
+      </LineChart>
+    </ResponsiveContainer>
   )
 }

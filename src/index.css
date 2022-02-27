@@ -27,8 +27,7 @@ body {
   overflow-y: auto;
   scroll-behavior: smooth;
 
-  font-size: clamp(100%, 1rem + 2vw, 18px);
-  font-family: 'Plus Jakarta Sans';
+  font-size: clamp(100%, 1rem + 2vw, 20px);
   font-weight: 400;
   background-color: #fafafa;
   scrollbar-gutter: stable;
