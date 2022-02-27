@@ -1,0 +1,75 @@
+{
+  "chartData": [
+    {
+      "cube": -0.12,
+      "linear": -0.5,
+      "square": 0.25,
+      "x": -0.5
+    },
+    {
+      "cube": -0.06,
+      "linear": -0.4,
+      "square": 0.16,
+      "x": -0.4
+    },
+    {
+      "cube": -0.03,
+      "linear": -0.3,
+      "square": 0.09,
+      "x": -0.3
+    },
+    {
+      "cube": -0.01,
+      "linear": -0.2,
+      "square": 0.04,
+      "x": -0.2
+    },
+    {
+      "cube": 0,
+      "linear": -0.1,
+      "square": 0.01,
+      "x": -0.1
+    },
+    {
+      "cube": 0,
+      "linear": 0,
+      "square": 0,
+      "x": 0
+    },
+    {
+      "cube": 0,
+      "linear": 0.1,
+      "square": 0.01,
+      "x": 0.1
+    },
+    {
+      "cube": 0.01,
+      "linear": 0.2,
+      "square": 0.04,
+      "x": 0.2
+    },
+    {
+      "cube": 0.03,
+      "linear": 0.3,
+      "square": 0.09,
+      "x": 0.3
+    },
+    {
+      "cube": 0.06,
+      "linear": 0.4,
+      "square": 0.16,
+      "x": 0.4
+    },
+    {
+      "cube": 0.12,
+      "linear": 0.5,
+      "square": 0.25,
+      "x": 0.5
+    }
+  ],
+  "enabledCharts": {
+    "cube": true,
+    "linear": true,
+    "square": true
+  }
+}
