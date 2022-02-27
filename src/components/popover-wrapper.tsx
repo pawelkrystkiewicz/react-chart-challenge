@@ -1,6 +1,6 @@
-import { useState } from "react"
-import { Popover, Text, Button, Image } from "@mantine/core"
+import { Button, Popover } from "@mantine/core"
 import { LayersIcon, MixerVerticalIcon } from "@radix-ui/react-icons"
+import { useState } from "react"
 
 interface PopoverWrapperProps {
   children: any

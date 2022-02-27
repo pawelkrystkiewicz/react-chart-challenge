@@ -22,7 +22,7 @@ function Setup() {
     if (data) {
       dispatch(setCharts(data.enabledCharts))
     }
-  }, [data])
+  }, [data, dispatch])
 
   useEffect(() => {
     if (!isLoading) {

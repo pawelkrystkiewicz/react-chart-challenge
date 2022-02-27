@@ -1,8 +1,8 @@
-import { Global, MantineProvider } from "@mantine/core"
-import "./index.css"
-import Setup from "./app/setup"
-import { store } from "./store"
+import { MantineProvider } from "@mantine/core"
 import { Provider } from "react-redux"
+import Setup from "./app/setup"
+import "./index.css"
+import { store } from "./store"
 
 function App() {
   return (
