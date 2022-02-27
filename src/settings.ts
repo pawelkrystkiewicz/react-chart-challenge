@@ -1,5 +1,5 @@
 const SETTINGS = {
-  apiUrl: 'http://d148j.mocklab.io',
+  apiUrl: process.env.REACT_APP_API_URL,
   appName: 'Function Graphs',
 }
 
