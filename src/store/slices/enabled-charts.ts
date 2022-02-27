@@ -7,7 +7,7 @@ const enabledChartsState = createSlice({
   initialState: {} as EnabledChartNames,
   reducers: {
     setCharts: (state, action: PayloadAction<EnabledChartNames>) => {
-      return state = action.payload
+      return (state = action.payload)
     },
     toggleChart: (state, action: PayloadAction<string>) => {
       const name = action.payload

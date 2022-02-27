@@ -1,7 +1,5 @@
 import { useAppSelector } from "../../hooks/redux"
-import {
-  selectEnabledCharts
-} from "../../store/slices/enabled-charts"
+import { selectEnabledCharts } from "../../store/slices/enabled-charts"
 import ChartToggle from "./chart-toggle"
 import { ChartControllerContainer } from "./styled"
 

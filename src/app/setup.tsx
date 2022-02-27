@@ -53,7 +53,7 @@ function Setup() {
         )}
       </AppUI.Toolbar>
       <AppUI.Chart>
-        <LoadingOverlay visible={isLoading} data-testid='loading-overlay'/>
+        <LoadingOverlay visible={isLoading} data-testid="loading-overlay" />
         {data && !error && (
           <Chart data={data.chartData} names={enabledCharts} />
         )}

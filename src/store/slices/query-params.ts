@@ -24,11 +24,10 @@ const queryParamsState = createSlice({
   },
 })
 
-export const {setQueryParam} = queryParamsState.actions
+export const { setQueryParam } = queryParamsState.actions
 
 // Other code such as selectors can use the imported `RootState` type
-export const selectQueryParams = (
-  state: RootState
-): DrawFunctionQueryParams => state.queryParamsState
+export const selectQueryParams = (state: RootState): DrawFunctionQueryParams =>
+  state.queryParamsState
 
 export default queryParamsState.reducer

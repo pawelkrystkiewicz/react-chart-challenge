@@ -12,7 +12,11 @@ import {
 } from "recharts"
 import { ChartDataPoint } from "../models/chart"
 import { EnabledChartNames } from "../models/system"
-import { getDarkerMantineShades, getTextValue, getValueBasedColor } from "../utils/chart-color-functions"
+import {
+  getDarkerMantineShades,
+  getTextValue,
+  getValueBasedColor,
+} from "../utils/chart-color-functions"
 
 interface ChartProps {
   data?: ChartDataPoint[]
@@ -35,7 +39,7 @@ export const Chart: React.FC<ChartProps> = ({ data, names }) => {
   const getColor = getValueBasedColor(colors)
 
   return (
-    <ResponsiveContainer width="100%" minHeight={350} data-testid='chart'>
+    <ResponsiveContainer width="100%" minHeight={350} data-testid="chart">
       <LineChart data={data}>
         <CartesianGrid strokeDasharray="3 3" />
         <XAxis dataKey="x" axisLine={false} />

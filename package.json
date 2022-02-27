@@ -30,8 +30,8 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier:check":"yarn prettier --check 'src/**.ts|x'",
-    "prettier:fix":"yarn prettier --write 'src/**.ts|x'"
+    "prettier:check": "yarn prettier --check 'src/**.ts|x'",
+    "prettier:fix": "yarn prettier --write ."
   },
   "eslintConfig": {
     "extends": [
