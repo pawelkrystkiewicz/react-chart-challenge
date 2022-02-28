@@ -27,3 +27,9 @@ To run automated test
 To build your version of application
 
 > yarn build
+
+To check prettier
+ > yarn prettier:check
+
+To run prettier in write mode:
+ > yarn prettier:fix
