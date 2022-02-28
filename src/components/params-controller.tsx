@@ -1,19 +1,37 @@
-import { MantineNumberSize, NumberInput } from "@mantine/core"
+import { Button, MantineNumberSize, NumberInput } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../hooks/redux"
 import { DrawFunctionQueryParams } from "../models/server"
+import { useLazyGetChartDataQuery } from "../store/services/chart-data-api"
 import { selectQueryParams, setQueryParam } from "../store/slices/query-params"
 
-const ParamsController: React.FC = () => {
+interface ParamsControllerProps {
+  query: (params: DrawFunctionQueryParams) => void
+  loading: boolean
+}
+
+const ParamsController: React.FC<ParamsControllerProps> = ({
+  query,
+  loading,
+}) => {
   const dispatch = useAppDispatch()
   const { from, to, step } = useAppSelector(selectQueryParams)
   const onChange = (target: keyof DrawFunctionQueryParams) => (value: number) =>
     dispatch(setQueryParam({ target, value }))
+
+  const queryAPI = () => query({ from, to, step })
+
+  const onKeyPressEnter = (e: React.KeyboardEvent<HTMLInputElement>) => {
+    if (e.key === "Enter") {
+      queryAPI()
+    }
+  }
 
   const commonProps = {
     radius: "md" as MantineNumberSize,
     required: true,
     stepHoldDelay: 500,
     stepHoldInterval: 100,
+    onKeyPress: onKeyPressEnter,
   }
 
   return (
@@ -45,6 +63,18 @@ const ParamsController: React.FC = () => {
         precision={2}
         {...commonProps}
       />
+      <Button
+        mt={20}
+        variant={"outline"}
+        fullWidth
+        size="sm"
+        radius={commonProps.radius}
+        onClick={queryAPI}
+        disabled={loading}
+        loading={loading}
+      >
+        Confirm
+      </Button>
     </div>
   )
 }

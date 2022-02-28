@@ -14,15 +14,8 @@ import { selectQueryParams } from "../store/slices/query-params"
 
 function MainComponent() {
   const enabledCharts = useAppSelector(selectEnabledCharts)
-  const params = useAppSelector(selectQueryParams)
   const dispatch = useAppDispatch()
   const [query, { data, error, isLoading }] = useLazyGetChartDataQuery()
-
-  useEffect(() => {
-    if (!isLoading) {
-      query(params)
-    }
-  }, [params, isLoading, query])
 
   useEffect(() => {
     if (data) {
@@ -31,6 +24,9 @@ function MainComponent() {
   }, [data, dispatch])
 
   const isTablet = useMediaQuery("(max-width: 767px)")
+
+  const Params = <ParamsController query={query} loading={isLoading} />
+  const ChartCtrl = <ChartController />
 
   return (
     <AppUI.Container>
@@ -41,16 +37,12 @@ function MainComponent() {
       <AppUI.Toolbar>
         {isTablet ? (
           <>
-            <PopoverWrapper variant="params">
-              <ParamsController />
-            </PopoverWrapper>
-            <PopoverWrapper variant="names">
-              <ChartController />
-            </PopoverWrapper>
+            <PopoverWrapper variant="params">{Params}</PopoverWrapper>
+            <PopoverWrapper variant="names">{ChartCtrl}</PopoverWrapper>
           </>
         ) : (
           <>
-            <ParamsController /> <ChartController />
+            {Params} {ChartCtrl}
           </>
         )}
       </AppUI.Toolbar>
