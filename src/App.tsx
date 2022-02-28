@@ -1,8 +1,9 @@
 import { MantineProvider } from "@mantine/core"
 import { Provider } from "react-redux"
-import MainComponent from "./app/setup"
+
 import "./index.css"
 import { store } from "./store"
+import MainComponent from "./app/main"
 
 function App() {
   return (
