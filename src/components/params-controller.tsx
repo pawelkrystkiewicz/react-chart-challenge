@@ -1,7 +1,6 @@
 import { Button, MantineNumberSize, NumberInput } from "@mantine/core"
 import { useAppDispatch, useAppSelector } from "../hooks/redux"
 import { DrawFunctionQueryParams } from "../models/server"
-import { useLazyGetChartDataQuery } from "../store/services/chart-data-api"
 import { selectQueryParams, setQueryParam } from "../store/slices/query-params"
 
 interface ParamsControllerProps {

@@ -10,7 +10,6 @@ import * as AppUI from "../components/styled"
 import { useAppDispatch, useAppSelector } from "../hooks/redux"
 import { useLazyGetChartDataQuery } from "../store/services/chart-data-api"
 import { selectEnabledCharts, setCharts } from "../store/slices/enabled-charts"
-import { selectQueryParams } from "../store/slices/query-params"
 
 function MainComponent() {
   const enabledCharts = useAppSelector(selectEnabledCharts)
