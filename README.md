@@ -33,7 +33,9 @@ To build your version of application
 > yarn build
 
 To check prettier
- > yarn prettier:check
+
+> yarn prettier:check
 
 To run prettier in write mode:
- > yarn prettier:fix
+
+> yarn prettier:fix
