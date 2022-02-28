@@ -1,6 +1,6 @@
 import { MantineProvider } from "@mantine/core"
 import { Provider } from "react-redux"
-import Setup from "./app/setup"
+import MainComponent from "./app/setup"
 import "./index.css"
 import { store } from "./store"
 
@@ -12,7 +12,7 @@ function App() {
         withGlobalStyles
         theme={{ fontFamily: "Open Sans" }}
       >
-        <Setup />
+        <MainComponent />
       </MantineProvider>
     </Provider>
   )

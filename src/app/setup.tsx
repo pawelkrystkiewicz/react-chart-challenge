@@ -12,11 +12,17 @@ import { useLazyGetChartDataQuery } from "../store/services/chart-data-api"
 import { selectEnabledCharts, setCharts } from "../store/slices/enabled-charts"
 import { selectQueryParams } from "../store/slices/query-params"
 
-function Setup() {
+function MainComponent() {
   const enabledCharts = useAppSelector(selectEnabledCharts)
   const params = useAppSelector(selectQueryParams)
   const dispatch = useAppDispatch()
   const [query, { data, error, isLoading }] = useLazyGetChartDataQuery()
+
+  useEffect(() => {
+    if (!isLoading) {
+      query(params)
+    }
+  }, [params, isLoading, query])
 
   useEffect(() => {
     if (data) {
@@ -24,12 +30,8 @@ function Setup() {
     }
   }, [data, dispatch])
 
-  useEffect(() => {
-    if (!isLoading) {
-      query(params)
-    }
-  }, [params, isLoading, query])
   const isTablet = useMediaQuery("(max-width: 767px)")
+
   return (
     <AppUI.Container>
       <AppUI.Title>
@@ -73,4 +75,4 @@ function Setup() {
   )
 }
 
-export default Setup
+export default MainComponent

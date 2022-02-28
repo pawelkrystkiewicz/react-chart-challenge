@@ -17,6 +17,7 @@ const ErrorInfo: React.FC<ErrorInfoProps> = ({
       color="red"
       radius="md"
       variant="outline"
+      ml={40}
     >
       {message}
       {details && (
