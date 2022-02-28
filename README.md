@@ -2,7 +2,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/1d0522a3-9c19-4571-b381-8076d8aef79f/deploy-status)](https://app.netlify.com/sites/chart-function/deploys)
 
-[Checkout demo](chart-function.netlify.app)
+[Checkout demo](https://chart-function.netlify.app)
 
 ## Setup
 
